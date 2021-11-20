@@ -1,25 +1,29 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
+import ChatListItem from '../components/ChatListItem';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
+import chatListMock from '../components/ChatListItem/mock'
 
 export default function ChatListScreen({ navigation }: RootTabScreenProps<'CHATS'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <FlatList
+        data={chatListMock}
+        renderItem={({ item }) =>
+          <TouchableOpacity key={item.id} 
+          >
+            <ChatListItem chatRoom={item} />
+          </TouchableOpacity>
+        }
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
     fontSize: 20,
