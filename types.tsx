@@ -17,6 +17,7 @@ export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
+  ChatRoom: ChatRoom;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -38,14 +39,15 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
 
 export type ChatRoom = {
   id: string;
-  users: [User];
+  users: User[];
   lastMsg: Message; 
 }
 
 export type Message = {
   id: string;
   content: string;
-  createdAt: Date;
+  createdAt: string;
+  userId: string;
 }
 
 export type User = {

@@ -1,4 +1,4 @@
-export const chatlistItemDate = (isoDate:Date): string => {
+export const chatlistItemDate = (isoDate:string): string => {
     const date = new Date(isoDate)
     let yesterday = new Date(new Date().toLocaleDateString())
     yesterday.setDate(yesterday.getDate()-1)
@@ -14,7 +14,7 @@ export const chatlistItemDate = (isoDate:Date): string => {
     } else return formatAMPM(date)
 }
 
-function formatAMPM(date: Date) {
+export const formatAMPM = (date: Date) => {
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let ampm = hours >= 12 ? 'pm' : 'am';

@@ -3,12 +3,12 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign, FontAwesome, Ionicons, MaterialIcons, SimpleLineIcons } from '@expo/vector-icons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable, View } from 'react-native';
+import { ColorSchemeName, Image, Pressable, View } from 'react-native';
 import { Octicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
@@ -21,6 +21,8 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import LABEL from '../constants/Labels';
 import ChatListScreen from '../screens/ChatListScreen';
+import ChatRoomScreen from '../screens/ChatRoomScreen';
+import BackArrow from '../components/BackArrow';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -61,6 +63,24 @@ function RootNavigator() {
           ),
         }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="ChatRoom" component={ChatRoomScreen} options={({ route, navigation }) => ({
+        title: route.params.users[0].name, 
+        headerLeft: () =>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', left: -10 }}>
+            <BackArrow navigation={navigation} />
+            <Image source={{ uri: route.params.users[0].imgUrl }} style={{ height: 35, width: 35, borderRadius: 30 }}
+            />
+          </View>,
+        headerRight: () =>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: 100}}>
+          <Ionicons name="videocam" size={22} color='white' />
+          <MaterialIcons name="call" size={22} color='white' />
+          <SimpleLineIcons name='options-vertical' color='white' size={18} />
+        </View>,
+        headerTitleStyle: {
+          fontWeight:'400'
+        }
+      })} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
@@ -86,7 +106,7 @@ function MainTabNavigator() {
           backgroundColor: Colors[colorScheme].tint,
         },
         tabBarItemStyle: {
-          width:'auto',
+          width: 'auto',
         },
         tabBarIndicatorStyle: {
           backgroundColor: Colors[colorScheme].background,

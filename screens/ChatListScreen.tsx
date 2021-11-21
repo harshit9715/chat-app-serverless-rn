@@ -12,10 +12,7 @@ export default function ChatListScreen({ navigation }: RootTabScreenProps<'CHATS
       <FlatList
         data={chatListMock}
         renderItem={({ item }) =>
-          <TouchableOpacity key={item.id} 
-          >
-            <ChatListItem chatRoom={item} />
-          </TouchableOpacity>
+            <ChatListItem key={item.id} chatRoom={item} />
         }
       />
     </View>
