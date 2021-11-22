@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-whatscrapp-dev-144920-authRole",
+      "UnauthRoleArn": "arn:aws:iam::455180012233:role/amplify-whatscrapp-dev-144920-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::455180012233:role/amplify-whatscrapp-dev-144920-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-whatscrapp-dev-144920-deployment",
+      "UnauthRoleName": "amplify-whatscrapp-dev-144920-unauthRole",
+      "StackName": "amplify-whatscrapp-dev-144920",
+      "StackId": "arn:aws:cloudformation:us-east-2:455180012233:stack/amplify-whatscrapp-dev-144920/4a03e9b0-4b75-11ec-b010-069e6c6ac232",
+      "AmplifyAppId": "d2v3x79l2glwdt"
+    }
+  }
+}
