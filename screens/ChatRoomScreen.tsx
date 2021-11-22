@@ -8,6 +8,7 @@ import ChatMesage from '../components/ChatMessage'
 import bg_light from '../assets/images/chat_bg_light.png';
 import bg_dark from '../assets/images/chat_bg_dark.png';
 import useColorScheme from '../hooks/useColorScheme'
+import InputBox from '../components/InputBox'
 
 const ChatRoomScreen = () => {
     const route = useRoute();
@@ -30,6 +31,7 @@ const ChatRoomScreen = () => {
             )
             }
         />
+        <InputBox />
         </ImageBackground>
     )
 }

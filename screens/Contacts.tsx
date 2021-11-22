@@ -1,24 +1,22 @@
 import * as React from 'react';
 import { FlatList, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
-import ChatListItem from '../components/ChatListItem';
 
 import { View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
-import chatListMock from '../components/ChatListItem/mock'
-import FAB from '../components/FAB';
+import contactListMock from '../components/ContactListItem/mock'
+import ContactListItem from '../components/ContactListItem';
 
-export default function ChatListScreen({ navigation }: RootTabScreenProps<'CHATS'>) {
+export default function ContactsScreen({ navigation }: RootTabScreenProps<'CHATS'>) {
   return (
     <>
       <View style={styles.container}>
-        <FlatList
-          data={chatListMock}
+      <FlatList
+          data={contactListMock}
           renderItem={({ item }) =>
-            <ChatListItem key={item.id} chatRoom={item} />
+            <ContactListItem key={item.id} user={item} />
           }
         />
       </View>
-      <FAB />
     </>
   );
 }

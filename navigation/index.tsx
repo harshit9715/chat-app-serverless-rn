@@ -23,6 +23,7 @@ import LABEL from '../constants/Labels';
 import ChatListScreen from '../screens/ChatListScreen';
 import ChatRoomScreen from '../screens/ChatRoomScreen';
 import BackArrow from '../components/BackArrow';
+import ContactsScreen from '../screens/Contacts';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -63,6 +64,7 @@ function RootNavigator() {
           ),
         }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="Contacts" component={ContactsScreen} options={{ title: 'Contacts' }} />
       <Stack.Screen name="ChatRoom" component={ChatRoomScreen} options={({ route, navigation }) => ({
         title: route.params.users[0].name, 
         headerLeft: () =>
