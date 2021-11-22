@@ -10,6 +10,11 @@
       "StackName": "amplify-whatscrapp-dev-144920",
       "StackId": "arn:aws:cloudformation:us-east-2:455180012233:stack/amplify-whatscrapp-dev-144920/4a03e9b0-4b75-11ec-b010-069e6c6ac232",
       "AmplifyAppId": "d2v3x79l2glwdt"
+    },
+    "categories": {
+      "auth": {
+        "whatscrappb36a7f35": {}
+      }
     }
   }
 }
