@@ -3,10 +3,11 @@ import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import styles from './styles'
-
+import {Auth} from 'aws-amplify'
 const FAB = () => {
     const {navigate} = useNavigation();
-    const onPress = () => {
+    const onPress = async () => {
+        // await Auth.signOut()
         navigate('Contacts');
     }
     return (

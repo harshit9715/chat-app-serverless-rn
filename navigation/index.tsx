@@ -23,7 +23,7 @@ import LABEL from '../constants/Labels';
 import ChatListScreen from '../screens/ChatListScreen';
 import ChatRoomScreen from '../screens/ChatRoomScreen';
 import BackArrow from '../components/BackArrow';
-import ContactsScreen from '../screens/Contacts';
+import ContactsScreen from '../screens/ContactScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
