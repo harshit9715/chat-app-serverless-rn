@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "whatscrapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authwhatscrappb36a7f35",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
