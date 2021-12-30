@@ -9,17 +9,17 @@ import { RootTabScreenProps } from '../types';
 import ContactListItem from '../components/ContactListItem';
 import { API, graphqlOperation, Auth } from 'aws-amplify';
 import { listUsers } from '../src/graphql/queries';
+import { useRoute } from '@react-navigation/core';
 
 export default function ContactsScreen({ navigation }: RootTabScreenProps<'CHATS'>) {
   const [users, setUsers] = useState([]);
+  const {params} = useRoute()
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const me = await Auth.currentUserInfo()
         const userList = await API.graphql(graphqlOperation(listUsers))
         console.log(userList);
-        console.log(me);
-        const otherUsers = userList.data.listUsers.items.filter(u => u.id !== me.attributes.sub)
+        const otherUsers = userList.data.listUsers.items.filter(u => u.id !== params?.myID)
         setUsers(otherUsers)
       } catch (err) {
         console.error(err);

@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/core';
 import React from 'react'
 import { View, Text } from 'react-native'
 import Colors from '../../constants/Colors';
@@ -12,7 +13,9 @@ export type ChatMessageProps = {
 
 const ChatMesage = ({message, user}: ChatMessageProps) => {
     const colorScheme = useColorScheme();
-    const isMyMsg = message.userId === "201"
+    const {params} = useRoute();
+    console.log('page: ', params);
+    const isMyMsg = message.userId === params.myID;
     return (
         <View style={[styles.mainContainer, {backgroundColor: isMyMsg? '#DCF8C5': '#e5e5e5'}, isMyMsg? {marginLeft: 50}: {marginRight: 50}]}>
             {isMyMsg || <Text style={[styles.otherUserTitle, {color: Colors[colorScheme].tint}]}>{user.name}</Text>}

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 
     },
     sendBtnContainer:{
-        backgroundColor: Colors.dark.tint,
+        backgroundColor: Colors.light.tint,
         width: 40,
         height: 40,
         marginLeft: 6,

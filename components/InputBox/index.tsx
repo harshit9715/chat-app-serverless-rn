@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import styles from './styles';
 
+import {API, Auth, graphqlOperation} from 'aws-amplify'
+import {createMessage} from '../../src/graphql/mutations'
+
 const InputBox = () => {
 
     const [msg, setMsg] = useState('');

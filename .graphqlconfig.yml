@@ -1,7 +1,6 @@
 projects:
   whatscrapp:
-    schemaPath: >-
-      home/harshit/Documents/personal/notJustDev/chat-app/WhatsappClone/graphql/schema.json
+    schemaPath: amplify/backend/api/whatscrapp/build/schema.graphql
     includes:
       - src/graphql/**/*.ts
     excludes:
@@ -11,3 +10,6 @@ projects:
         codeGenTarget: typescript
         generatedFileName: src/API.ts
         docsFilePath: src/graphql
+extensions:
+  amplify:
+    version: 3

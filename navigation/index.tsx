@@ -25,12 +25,20 @@ import ChatRoomScreen from '../screens/ChatRoomScreen';
 import BackArrow from '../components/BackArrow';
 import ContactsScreen from '../screens/ContactScreen';
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export type MyInfo = {
+  email: String,
+  email_verified: Boolean,
+  phone_number: String,
+  phone_number_verified: Boolean,
+  sub: String,
+  username: String
+}
+export default function Navigation({ colorScheme, myInfo }: { colorScheme: ColorSchemeName, myInfo: MyInfo }) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme !== 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator />
+      <RootNavigator myInfo={myInfo} />
     </NavigationContainer>
   );
 }
@@ -41,7 +49,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
  */
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function RootNavigator() {
+function RootNavigator({myInfo}: {myInfo: MyInfo}) {
   const colorScheme = useColorScheme();
   return (
     <Stack.Navigator screenOptions={{
@@ -64,8 +72,8 @@ function RootNavigator() {
           ),
         }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Screen name="Contacts" component={ContactsScreen} options={{ title: 'Contacts' }} />
-      <Stack.Screen name="ChatRoom" component={ChatRoomScreen} options={({ route, navigation }) => ({
+      <Stack.Screen name="Contacts" component={ContactsScreen} initialParams={{myID: myInfo.sub}} options={{ title: 'Contacts' }} />
+      <Stack.Screen name="ChatRoom" component={ChatRoomScreen} initialParams={{myID: myInfo.sub}} options={({ route, navigation }) => ({
         title: route.params.users[0].name, 
         headerLeft: () =>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', left: -10 }}>

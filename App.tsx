@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import useCachedResources from './hooks/useCachedResources';
@@ -31,6 +31,14 @@ const getRandomImg = () => {
 }
 
 function App() {
+  const [myInfo, setMyInfo] = useState({
+    "email": "",
+    "email_verified": true,
+    "phone_number": "",
+    "phone_number_verified": false,
+    "sub": "",
+    "username": ""
+  });
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
   // Run this snippet only when app is first mounted
@@ -38,7 +46,10 @@ function App() {
     const fetchUser = async () => {
       // get Authenticated User from Auth
       const userInfo = await Auth.currentAuthenticatedUser({bypassCache: true});
-
+      setMyInfo({
+        ...userInfo.attributes,
+        username: userInfo.username
+      })
       // Get the user from backend with UID from auth.
       if (userInfo) {
         const userData = await API.graphql(graphqlOperation(getUser, {id: userInfo.attributes.sub}));
@@ -66,7 +77,7 @@ function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
+        <Navigation myInfo={myInfo} colorScheme={colorScheme} />
         <StatusBar />
       </SafeAreaProvider>
     );
